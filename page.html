@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>3D Transformation Matrix Generator</title>
+<script src="calculations.js"></script>
+<link rel="stylesheet" href="display.css">
+</head>
+<body>
+<div class="rotationContainer">
+<p>Rotation Parameters</p>
+<div class="slidecontainer">
+  <input type="range" min="-180" max="180" value="0" class="slider" onchange="transform();document.getElementById('x_rot_val').innerHTML=this.value + '°'" id="x_rotation" /><label id="x_rot_val" for="x_rotation">0°</label>
+</div>
+<div class="slidecontainer">
+  <input type="range" min="-180" max="180" value="0" class="slider" onchange="transform();document.getElementById('y_rot_val').innerHTML=this.value + '°'" id="y_rotation" /><label id="y_rot_val" for="y_rotation">0°</label>
+</div>
+<div class="slidecontainer">
+  <input type="range" min="-180" max="180" value="0" class="slider" onchange="transform();document.getElementById('z_rot_val').innerHTML=this.value + '°'" id="z_rotation" /><label id="z_rot_val" for="z_rotation">0°</label>
+</div>
+</div>
+
+<button onclick="document.getElementById('x_rotation').value=0;document.getElementById('y_rotation').value=0;document.getElementById('z_rotation').value=0;transform();document.getElementById('x_rot_val').innerHTML='0°';document.getElementById('y_rot_val').innerHTML='0°';document.getElementById('z_rot_val').innerHTML='0°'">Reset</button>
+
+<div class="shearContainer">
+<p>Shearing Parameters</p>
+<div class="slidecontainer">
+  <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="x_shear" />
+</div>
+<div class="slidecontainer">
+  <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="y_shear" />
+</div>
+<div class="slidecontainer">
+  <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="z_shear" />
+</div>
+</div>
+
+<div class="scaleContainer">
+<p>Scaling Parameters</p>
+<input type="value" value="1" onchange="transform();" class="scalingValue" id="x_scale" /><br/>
+<input type="value" value="1" onchange="transform();" class="scalingValue" id="y_scale" /><br/>
+<input type="value" value="1" onchange="transform();" class="scalingValue" id="z_scale" />
+</div>
+
+<div class="translationContainer">
+<p>Translation Parameters</p>
+<input type="value" value="0" class="translationValue" id="x_translate" /><br/>
+<input type="value" value="0" class="translationValue" id="y_translate" /><br/>
+<input type="value" value="0" class="translationValue" id="z_translate" />
+</div>
+
+<div class="outputContainer">
+<textarea id="commandOutput" name="commandOutput" rows="4" cols="50" disabled>summon minecraft:block_display ~ ~ ~ {block_state:{Name:"minecraft:stone"},billboard:"fixed",glow_color_override:0,interpolation_duration:0,interpolation_start:-1,transformation:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],view_range:1.0f,shadow_radius:1,shadow_strength:1}</textarea>
+</div>
+
+   <div class="scene">  
+  <div class="cube">
+    <div class="cube__face cube__face--front">front</div>
+    <div class="cube__face cube__face--back">back</div>
+    <div class="cube__face cube__face--right">right</div>
+    <div class="cube__face cube__face--left">left</div>
+    <div class="cube__face cube__face--top">top</div>
+    <div class="cube__face cube__face--bottom">bottom</div>
+  </div>
+   </div>
+
+
+
+</body>
+</html>
