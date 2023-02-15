@@ -5,7 +5,7 @@ var y_rot = document.getElementById("y_rotation").value
 var z_rot = document.getElementById("z_rotation").value
 //convert to Rad
 x_rot = x_rot / 180 * Math.PI
-y_rot = y_rot / 180 * Math.PI
+y_rot = -y_rot / 180 * Math.PI
 z_rot = z_rot / 180 * Math.PI
 //Get Shearing Parameters
 var x_shear = document.getElementById("x_shear").value
