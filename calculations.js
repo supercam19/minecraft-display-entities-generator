@@ -31,7 +31,7 @@ document.getElementsByClassName("cube")[0].style.transform = "matrix3d("+result[
     result[0][3] = x_offset;
     result[1][3] = y_offset;
     result[2][3] = z_offset;
-    document.getElementById("commandOutput").value = "summon minecraft:block_display ~ ~ ~ {block_state:{Name:\"minecraft:stone\"},billboard:\"fixed\",glow_color_override:0,interpolation_duration:0,interpolation_start:-1,transformation:["+result[0][0]+","+result[0][1]+","+result[0][2]+","+result[0][3]+","+result[1][0]+","+result[1][1]+","+result[1][2]+","+result[1][3]+","+result[2][0]+","+result[2][1]+","+result[2][2]+","+result[2][3]+","+result[3][0]+","+result[3][1]+","+result[3][2]+","+result[3][3]+"],view_range:1.0f,shadow_radius:1,shadow_strength:1}"
+    document.getElementById("commandOutput").value = "summon minecraft:block_display ~ ~ ~ {block_state:{Name:\"minecraft:stone\"},billboard:\"fixed\",glow_color_override:0,interpolation_duration:0,interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f],view_range:1.0f,shadow_radius:1,shadow_strength:1}"
 }
 
 function multiply_matrix(m1,m2) {
