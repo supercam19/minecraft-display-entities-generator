@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>3D Transformation Matrix Generator</title>
+<title>Minecraft Display Entities Generator</title>
+  
+<meta name="description" content="Generate /summon commands for display entities for Minecraft (Java 1.19.4+) with preview of the result">
+<meta name="author" content="Mlakuss">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Minecraft, Matrix, Transformation, Display, Summon, Data">
+
 <script src="calculations.js"></script>
 <link rel="stylesheet" href="display.css">
 </head>
 <body>
+  
+  <div id="banner">
+    <h1>Display Entities Generator</h1>
+  </div>
+  
 <div class="rotationContainer">
 <p>Rotation Parameters</p>
 <div class="slidecontainer">
@@ -27,13 +38,17 @@
 <p>Shearing Parameters</p>
 <div class="slidecontainer">
   <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="x_shear" />
+  <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="x_shear_2" />
 </div>
 <div class="slidecontainer">
   <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="y_shear" />
+  <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="y_shear_2" />
 </div>
 <div class="slidecontainer">
   <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="z_shear" />
+  <input type="range" onchange="transform();" min="-2" max="2" step="0.1" value="0" class="slider" id="z_shear_2" />
 </div>
+  <br />
   <button onclick="resetShear()">Reset</button>
 </div>
 
@@ -42,6 +57,7 @@
   <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="x_scale" /><br/>
   <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="y_scale" /><br/>
   <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="z_scale" />
+  <br />
   <button onclick="resetScale()">Reset</button>
 </div>
 
@@ -50,7 +66,8 @@
     <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="x_translate" /><br/>
     <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="y_translate" /><br/>
     <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="z_translate" />
-      <button onclick="resetTranslation()">Reset</button>  <button onclick="center()">Center</button>
+    <br />
+    <button onclick="resetTranslation()">Reset</button>  <button onclick="center()">Center</button>
   </div>
   
   <div class="animationContainer">
