@@ -1,3 +1,9 @@
+input[type=value] {
+  width: 40px;
+  text-align: center;
+  display: inline-block;
+}
+
 .scene {
   width: 200px;
   height: 200px;
@@ -6,6 +12,9 @@
   top: 200px;
   margin-left: 600px;
   perspective: 600px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .cube {
@@ -19,33 +28,35 @@
 
 .cube__face {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
   display: inline-block;
-  opacity: 0.3;
   text-align:center;
-  line-height: 80px;
+  line-height: 200px;
   font-size: 30px;
   outline: 5px solid #000000;
 }
 .cube__face--front  {
-  background: red;
+  background: rgba(255,0,0,0.5);
 transform: rotateY(0deg) translateZ(100px);
 }
 .cube__face--right  {
-  background: blue;
+  background: rgba(0,0,255,0.5);
   transform: rotateY(90deg) translateZ(100px);
   }
 .cube__face--back   {
-  background: green;
+  background: rgba(0,255,0,0.5);
   transform: rotateY(180deg) translateZ(100px);
   }
 .cube__face--left   {
-  background: purple;
+  background: rgba(255,255,0,0.5);
   transform: rotateY(-90deg) translateZ(100px);
   }
 .cube__face--top    {
-  background:yellow;
+  background: rgba(0,255,255,0.5);
   transform: rotateX(90deg) translateZ(100px);
   }
-.cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+.cube__face--bottom {
+  background: rgba(255,0,255,0.5);
+  transform: rotateX(-90deg) translateZ(100px);
+}
