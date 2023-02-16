@@ -37,7 +37,8 @@ function transform() {
     anim_duration = anim_duration * 20;
     var shadow_radius = document.getElementById("shadow_radius").value;
     var shadow_strength = document.getElementById("shadow_strength").value;
-    document.getElementById("commandOutput").value = "summon minecraft:block_display ~ ~ ~ {block_state:{Name:\"minecraft:stone\"},billboard:\""+billboard+"\",glow_color_override:0,interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f],view_range:1.0f,shadow_radius:"+shadow_radius+"f,shadow_strength:"+shadow_strength+"f}"
+    var view_range = document.getElementById("view_range").value;
+    document.getElementById("commandOutput").value = "summon minecraft:block_display ~ ~ ~ {block_state:{Name:\"minecraft:stone\"},billboard:\""+billboard+"\",glow_color_override:0,interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f],view_range:"+view_range+"f,shadow_radius:"+shadow_radius+"f,shadow_strength:"+shadow_strength+"f}"
 }
 
 function multiply_matrix(m1,m2) {
@@ -60,6 +61,7 @@ for (y=0; y < multiplication[x].length; y++) {
 return multiplication
 }
 function validate(item) {
+    if (isNaN(item.value)) {item.value = item.placeholder;}
     if (item.value < item.min) {item.value = item.min;}
     if (item.value > item.max) {item.value = item.max;}
 }
