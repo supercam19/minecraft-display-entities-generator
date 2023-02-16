@@ -63,9 +63,9 @@ for (y=0; y < multiplication[x].length; y++) {
 return multiplication
 }
 function validate(item) {
-    if (isNaN(item.value)) {item.value = item.placeholder;}
-    if (item.value < item.min) {item.value = item.min;}
-    if (item.value > item.max) {item.value = item.max;}
+    if (isNaN(item.value)) {item.value = Number(item.placeholder);}
+    if (item.value < Number(item.min)) {item.value = Number(item.min);}
+    if (item.value > Number(item.max)) {item.value = Number(item.max);}
 }
 
 function resetRotation() {
