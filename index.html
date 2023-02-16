@@ -12,10 +12,10 @@
   <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('x_rot_val').innerHTML=this.value + '°'" id="x_rotation" /><label id="x_rot_val" for="x_rotation">0°</label>
 </div>
 <div class="slidecontainer">
-  <input type="range" min="-180" max="180" value="0" class="slider" onchange="transform();document.getElementById('y_rot_val').innerHTML=this.value + '°'" id="y_rotation" /><label id="y_rot_val" for="y_rotation">0°</label>
+  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('y_rot_val').innerHTML=this.value + '°'" id="y_rotation" /><label id="y_rot_val" for="y_rotation">0°</label>
 </div>
 <div class="slidecontainer">
-  <input type="range" min="-180" max="180" value="0" class="slider" onchange="transform();document.getElementById('z_rot_val').innerHTML=this.value + '°'" id="z_rotation" /><label id="z_rot_val" for="z_rotation">0°</label>
+  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('z_rot_val').innerHTML=this.value + '°'" id="z_rotation" /><label id="z_rot_val" for="z_rotation">0°</label>
 </div>
   <span>Step: </span>
   <input type="value" min="0.1" max="10" value="5" class="smallInput" onchange="rotationStep(this.value)" />
@@ -39,32 +39,32 @@
 
 <div class="scaleContainer">
   <p>Scaling Parameters</p>
-  <input type="value" value="1" onchange="transform();" class="scalingValue" id="x_scale" /><br/>
-  <input type="value" value="1" onchange="transform();" class="scalingValue" id="y_scale" /><br/>
-  <input type="value" value="1" onchange="transform();" class="scalingValue" id="z_scale" />
+  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="x_scale" /><br/>
+  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="y_scale" /><br/>
+  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="z_scale" />
   <button onclick="resetScale()">Reset</button>
 </div>
 
   <div class="translationContainer">
     <p>Translation Parameters</p>
-    <input type="value" value="0" class="translationValue" id="x_translate" /><br/>
-    <input type="value" value="0" class="translationValue" id="y_translate" /><br/>
-    <input type="value" value="0" class="translationValue" id="z_translate" />
+    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="x_translate" /><br/>
+    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="y_translate" /><br/>
+    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="z_translate" />
       <button onclick="resetTranslation()">Reset</button>  <button onclick="center()">Center</button>
   </div>
   
   <div class="animationContainer">
     <p>Animation Duration (seconds):</p>
-    <input type="value" onchange="validate(this)" value="0" min="0" max="3600" class="animationValue" id="anim_duration" />
+    <input type="value" onchange="validate(this);" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
     <br />
     <p>Shadow Radius:</p>
-    <input type="value" onchange="validate(this)" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
+    <input type="value" onchange="validate(this);" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
     <br />
     <p>Shadow Opacity:</p>
-    <input type="value" onchange="validate(this)" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
+    <input type="value" onchange="validate(this);" placeholder="1" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
     <br />
     <p>View Range:</p>
-    <input type="value" onchange="validate(this)" value="1" min="0" max="10" class="animationValue" id="view_range" />
+    <input type="value" onchange="validate(this);" placeholder="1" value="1" min="0" max="10" class="animationValue" id="view_range" />
     <br />
     <label for="billboard" title="Change if the element should change its orientation with the camera">Billboard:</label>
     <select name="billboard" id="billboard">
@@ -74,10 +74,14 @@
       <option value="center">Center</option>
     </select> 
     <br />
+    <label for="override_glow">Override Glowing Color?</label>
+    <input type="checkbox" id="override_glow" name="override_glow">
+    <br />
+    <label>Custom Glowing Color: </label><input id="glow_color" type="color" />
   </div>
 
 <div class="outputContainer">
-<textarea id="commandOutput" name="commandOutput" rows="4" cols="50" disabled>summon minecraft:block_display ~ ~ ~ {block_state:{Name:"minecraft:stone"},billboard:"fixed",glow_color_override:0,interpolation_duration:0,interpolation_start:-1,transformation:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],view_range:1.0f,shadow_radius:1,shadow_strength:1}</textarea>
+<textarea id="commandOutput" name="commandOutput" rows="4" cols="50" readonly>summon minecraft:block_display ~ ~ ~ {block_state:{Name:"minecraft:stone"},billboard:"fixed",glow_color_override:0,interpolation_duration:0,interpolation_start:-1,transformation:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],view_range:1.0f,shadow_radius:1,shadow_strength:1}</textarea>
 </div>
 
    <div class="scene">  
