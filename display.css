@@ -1,8 +1,10 @@
 .scene {
   width: 200px;
   height: 200px;
-  display: inline-block;
-margin-left: 600px;
+  display: block;
+  position: fixed;
+  top: 200px;
+  margin-left: 600px;
   perspective: 600px;
 }
 
