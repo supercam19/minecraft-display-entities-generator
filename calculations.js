@@ -11,6 +11,9 @@ function transform() {
     var x_shear = document.getElementById("x_shear").value
     var y_shear = document.getElementById("y_shear").value
     var z_shear = document.getElementById("z_shear").value
+    var x_shear_2 = document.getElementById("x_shear_2").value
+    var y_shear_2 = document.getElementById("y_shear_2").value
+    var z_shear_2 = document.getElementById("z_shear_2").value
     //Get Scaling Parameters
     var x_scale = document.getElementById("x_scale").value
     var y_scale = document.getElementById("y_scale").value
@@ -22,14 +25,15 @@ function transform() {
     //Set Base Matrices
     var matrix_id = [[x_scale,0,0,0],[0,y_scale,0,0],[0,0,z_scale,0],[0,0,0,1]]
     var shear_matrix = [[1,x_shear,x_shear,0],[y_shear,1,y_shear,0],[z_shear,z_shear,1,0],[0,0,0,1]]
-    var shear_matrix_2 = [[1,y_shear,z_shear,0],[x_shear,1,z_shear,0],[x_shear,y_shear,1,0],[0,0,0,1]]
+    var shear_matrix_2 = [[1,y_shear_2,z_shear_2,0],[x_shear_2,1,z_shear_2,0],[x_shear_2,y_shear_2,1,0],[0,0,0,1]]
     var rot_matrix = [[Math.cos(y_rot)*Math.cos(z_rot),Math.sin(x_rot)*Math.sin(y_rot)*Math.cos(z_rot)-Math.cos(x_rot)*Math.sin(z_rot),Math.cos(x_rot)*Math.sin(y_rot)*Math.cos(z_rot+Math.sin(x_rot)*Math.sin(z_rot)),0],[Math.cos(y_rot)*Math.sin(z_rot),Math.sin(x_rot)*Math.sin(y_rot)*Math.sin(z_rot)+Math.cos(x_rot)*Math.cos(z_rot),Math.cos(x_rot)*Math.sin(y_rot)*Math.sin(z_rot)-Math.sin(x_rot)*Math.cos(z_rot),0],[-Math.sin(y_rot),Math.sin(x_rot)*Math.cos(y_rot),Math.cos(x_rot)*Math.cos(y_rot),0],[0,0,0,1]]
     //Apply transformations
     result = multiply_matrix(matrix_id,shear_matrix);
+    result = multiply_matrix(result,shear_matrix_2);
     result = multiply_matrix(result,rot_matrix);
 
     document.getElementsByClassName("cube")[0].style.transform = "matrix3d("+result[0][0]+","+result[0][1]+","+result[0][2]+","+result[0][3]+","+result[1][0]+","+result[1][1]+","+result[1][2]+","+result[1][3]+","+result[2][0]+","+result[2][1]+","+result[2][2]+","+result[2][3]+","+result[3][0]+","+result[3][1]+","+result[3][2]+","+result[3][3]+")"
-    document.getElementsByClassName("cube")[0].style.transform += " transformX("+x_offset*200+"px) transformY("+y_offset+"px) transformZ("+z_offset+"px)"
+    document.getElementsByClassName("cube")[0].style.transform += " translateX("+x_offset*200+"px) translateY("+y_offset+"px) translateZ("+z_offset+"px)"
     result[0][3] = x_offset;
     result[1][3] = y_offset;
     result[2][3] = z_offset;
@@ -40,7 +44,8 @@ function transform() {
     var shadow_radius = document.getElementById("shadow_radius").value;
     var shadow_strength = document.getElementById("shadow_strength").value;
     var view_range = document.getElementById("view_range").value;
-    document.getElementById("commandOutput").value = "summon minecraft:block_display ~ ~ ~ {block_state:{Name:\"minecraft:stone\"},billboard:\""+billboard+"\",glow_color_override:0,interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f],view_range:"+view_range+"f,shadow_radius:"+shadow_radius+"f,shadow_strength:"+shadow_strength+"f}"
+    if (document.getElementById("override_glow").checked) {var glow = parseInt(document.getElementById("glow_color").value.substring(1),16);} else {var glow = 0;}
+    document.getElementById("commandOutput").value = "summon minecraft:block_display ~ ~ ~ {block_state:{Name:\"minecraft:stone\"},billboard:\""+billboard+"\",glow_color_override:"+glow+",interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f],view_range:"+view_range+"f,shadow_radius:"+shadow_radius+"f,shadow_strength:"+shadow_strength+"f}"
 }
 
 function multiply_matrix(m1,m2) {
