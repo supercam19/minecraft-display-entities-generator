@@ -1,3 +1,40 @@
+body {
+  background-color: #222;
+  color: #eee;
+}
+.rotationContainer, .shearContainer, .scaleContainer {
+  width: 250px;
+  border: 1px solid black;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  z-index: 5;
+}
+.slidecontainer {
+  text-align: center;
+}
+.rotationContainer label {
+  display: inline-block;
+  width: 40px;
+  position: relative;
+  top: -6px;
+}
+
+.rotationContainer input {
+  width: 200px;
+  display: inline-block;
+}
+.shearContainer input {
+  width: 120px;
+  display: inline-block;
+}
+.rotationContainer>button {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+
 input[type=value] {
   width: 40px;
   text-align: center;
