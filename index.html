@@ -9,7 +9,7 @@
 <div class="rotationContainer">
 <p>Rotation Parameters</p>
 <div class="slidecontainer">
-  <input type="range" min="-180" max="180" value="0" class="slider" onchange="transform();document.getElementById('x_rot_val').innerHTML=this.value + '°'" id="x_rotation" /><label id="x_rot_val" for="x_rotation">0°</label>
+  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('x_rot_val').innerHTML=this.value + '°'" id="x_rotation" /><label id="x_rot_val" for="x_rotation">0°</label>
 </div>
 <div class="slidecontainer">
   <input type="range" min="-180" max="180" value="0" class="slider" onchange="transform();document.getElementById('y_rot_val').innerHTML=this.value + '°'" id="y_rotation" /><label id="y_rot_val" for="y_rotation">0°</label>
@@ -19,7 +19,10 @@
 </div>
 </div>
 
-<button onclick="document.getElementById('x_rotation').value=0;document.getElementById('y_rotation').value=0;document.getElementById('z_rotation').value=0;transform();document.getElementById('x_rot_val').innerHTML='0°';document.getElementById('y_rot_val').innerHTML='0°';document.getElementById('z_rot_val').innerHTML='0°'">Reset</button>
+  <span>Step: </span>
+  <input type="value" min="0.1" max="10" value="5" onchange="rotationStep(this.value)" />
+  <br />
+  <button onclick="resetRotation()">Reset</button>
 
 <div class="shearContainer">
 <p>Shearing Parameters</p>
@@ -41,12 +44,36 @@
 <input type="value" value="1" onchange="transform();" class="scalingValue" id="z_scale" />
 </div>
 
-<div class="translationContainer">
-<p>Translation Parameters</p>
-<input type="value" value="0" class="translationValue" id="x_translate" /><br/>
-<input type="value" value="0" class="translationValue" id="y_translate" /><br/>
-<input type="value" value="0" class="translationValue" id="z_translate" />
-</div>
+  <div class="translationContainer">
+    <p>Translation Parameters</p>
+    <input type="value" value="0" class="translationValue" id="x_translate" /><br/>
+    <input type="value" value="0" class="translationValue" id="y_translate" /><br/>
+    <input type="value" value="0" class="translationValue" id="z_translate" />
+  </div>
+  
+  <div class="animationContainer">
+    <p>Animation Duration (seconds):</p>
+    <input type="value" value="0" min="0" max="3600" class="animationValue" id="anim_duration" />
+    <br />
+    <p>Shadow Radius:</p>
+    <input type="value" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
+    <br />
+    <p>Shadow Opacity:</p>
+    <input type="value" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
+    <br />
+    <p>View Range:</p>
+    <input type="value" value="1" min="0" max="10" class="animationValue" id="view_range" />
+    <br />
+    <p>Billboard:</p>
+     <input id="billboard_value" list="billboard" value="fixed" />
+    <datalist id="billboard">
+      <option value="fixed">Fixed</option>
+      <option value="vertical">Vertical</option>
+      <option value="horizontal">Horizontal</option>
+      <option value="center">Center</option>
+    </datalist> 
+    <br />
+  </div>
 
 <div class="outputContainer">
 <textarea id="commandOutput" name="commandOutput" rows="4" cols="50" disabled>summon minecraft:block_display ~ ~ ~ {block_state:{Name:"minecraft:stone"},billboard:"fixed",glow_color_override:0,interpolation_duration:0,interpolation_start:-1,transformation:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],view_range:1.0f,shadow_radius:1,shadow_strength:1}</textarea>
@@ -54,12 +81,12 @@
 
    <div class="scene">  
   <div class="cube">
-    <div class="cube__face cube__face--front">front</div>
-    <div class="cube__face cube__face--back">back</div>
-    <div class="cube__face cube__face--right">right</div>
-    <div class="cube__face cube__face--left">left</div>
-    <div class="cube__face cube__face--top">top</div>
-    <div class="cube__face cube__face--bottom">bottom</div>
+    <div class="cube__face cube__face--front">Front</div>
+    <div class="cube__face cube__face--back">Back</div>
+    <div class="cube__face cube__face--right">Right</div>
+    <div class="cube__face cube__face--left">Left</div>
+    <div class="cube__face cube__face--top">Top</div>
+    <div class="cube__face cube__face--bottom">Bottom</div>
   </div>
    </div>
 
