@@ -5,7 +5,7 @@ var y_rot = document.getElementById("y_rotation").value
 var z_rot = document.getElementById("z_rotation").value
 //convert to Rad
 x_rot = x_rot / 180 * Math.PI
-y_rot = -y_rot / 180 * Math.PI
+y_rot = y_rot / 180 * Math.PI
 z_rot = z_rot / 180 * Math.PI
 //Get Shearing Parameters
 var x_shear = document.getElementById("x_shear").value
@@ -53,3 +53,22 @@ for (y=0; y < multiplication[x].length; y++) {
 }
 return multiplication
 }
+
+function resetRotation() {
+    document.getElementById('x_rotation').value=0;
+    document.getElementById('y_rotation').value=0;
+    document.getElementById('z_rotation').value=0;
+    transform();
+    document.getElementById('x_rot_val').innerHTML='0°';
+    document.getElementById('y_rot_val').innerHTML='0°';
+    document.getElementById('z_rot_val').innerHTML='0°';
+}
+
+function rotationStep(val) {
+    document.getElementById('x_rotation').step = val;
+    document.getElementById('y_rotation').step = val;
+    document.getElementById('z_rotation').step = val;
+}
+    
+    
+    
