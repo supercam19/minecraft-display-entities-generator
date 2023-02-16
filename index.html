@@ -54,18 +54,18 @@
 
 <div class="scaleContainer">
   <p>Scaling Parameters</p>
-  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="x_scale" /><br/>
-  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="y_scale" /><br/>
-  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);" onchange="transform();" class="scalingValue" id="z_scale" />
+  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="x_scale" /><br/>
+  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="y_scale" /><br/>
+  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="z_scale" />
   <br />
   <button onclick="resetScale()">Reset</button>
 </div>
 
   <div class="translationContainer">
     <p>Translation Parameters</p>
-    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="x_translate" /><br/>
-    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="y_translate" /><br/>
-    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);" class="translationValue" id="z_translate" />
+    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="x_translate" /><br/>
+    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="y_translate" /><br/>
+    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="z_translate" />
     <br />
     <button onclick="resetTranslation()">Reset</button>  <button onclick="center()">Center</button>
   </div>
