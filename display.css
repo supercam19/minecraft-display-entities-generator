@@ -92,8 +92,7 @@ input[type=range]:focus {
   position: fixed;
   top: 300px;
   margin-left: 800px;
-  border: 1px solid red;
-  perspective: 600px;
+  perspective: 400px;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
