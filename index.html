@@ -72,19 +72,19 @@
   
   <div class="animationContainer">
     <p>Animation Duration (seconds):</p>
-    <input type="value" onchange="validate(this);" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
+    <input type="value" onchange="validate(this);transform();" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
     <br />
     <p>Shadow Radius:</p>
-    <input type="value" onchange="validate(this);" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
+    <input type="value" onchange="validate(this);transform();" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
     <br />
     <p>Shadow Opacity:</p>
-    <input type="value" onchange="validate(this);" placeholder="1" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
+    <input type="value" onchange="validate(this);transform();" placeholder="1" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
     <br />
     <p>View Range:</p>
-    <input type="value" onchange="validate(this);" placeholder="1" value="1" min="0" max="10" class="animationValue" id="view_range" />
+    <input type="value" onchange="validate(this);transform();" placeholder="1" value="1" min="0" max="10" class="animationValue" id="view_range" />
     <br />
     <label for="billboard" title="Change if the element should change its orientation with the camera">Billboard:</label>
-    <select name="billboard" id="billboard">
+    <select onchange="transform();" name="billboard" id="billboard">
       <option value="fixed">Fixed</option>
       <option value="vertical">Vertical</option>
       <option value="horizontal">Horizontal</option>
@@ -92,9 +92,9 @@
     </select> 
     <br />
     <label for="override_glow">Override Glowing Color?</label>
-    <input type="checkbox" id="override_glow" name="override_glow">
+    <input type="checkbox" onchange="transform();" id="override_glow" name="override_glow">
     <br />
-    <label>Custom Glowing Color: </label><input id="glow_color" type="color" />
+    <label>Custom Glowing Color: </label><input onchange="transform();" id="glow_color" type="color" />
   </div>
 
 <div class="outputContainer">
