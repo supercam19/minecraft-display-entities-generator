@@ -26,7 +26,11 @@ function transform() {
     var matrix_id = [[x_scale,0,0,0],[0,y_scale,0,0],[0,0,z_scale,0],[0,0,0,1]]
     var shear_matrix = [[1,x_shear,x_shear,0],[y_shear,1,y_shear,0],[z_shear,z_shear,1,0],[0,0,0,1]]
     var shear_matrix_2 = [[1,y_shear_2,z_shear_2,0],[x_shear_2,1,z_shear_2,0],[x_shear_2,y_shear_2,1,0],[0,0,0,1]]
-    var rot_matrix = [[Math.cos(y_rot)*Math.cos(z_rot),Math.sin(x_rot)*Math.sin(y_rot)*Math.cos(z_rot)-Math.cos(x_rot)*Math.sin(z_rot),Math.cos(x_rot)*Math.sin(y_rot)*Math.cos(z_rot+Math.sin(x_rot)*Math.sin(z_rot)),0],[Math.cos(y_rot)*Math.sin(z_rot),Math.sin(x_rot)*Math.sin(y_rot)*Math.sin(z_rot)+Math.cos(x_rot)*Math.cos(z_rot),Math.cos(x_rot)*Math.sin(y_rot)*Math.sin(z_rot)-Math.sin(x_rot)*Math.cos(z_rot),0],[-Math.sin(y_rot),Math.sin(x_rot)*Math.cos(y_rot),Math.cos(x_rot)*Math.cos(y_rot),0],[0,0,0,1]]
+    var rot_matrix_x =[[1,0,0,0],[0,Math.cos(x_rot),-Math.sin(x_rot),0],[0,Math.sin(x_rot),Math.cos(x_rot),0],[0,0,0,1]];
+    var rot_matrix_y =[[Math.cos(y_rot),0,Math.sin(y_rot),0],[0,1,0,0],[-Math.sin(y_rot),0,Math.cos(y_rot),0],[0,0,0,1]];
+    var rot_matrix_z = [[Math.cos(z_rot),-Math.sin(z_rot),0,0],[Math.sin(z_rot),Math.cos(z_rot),0,0],[0,0,1,0],[0,0,0,1]]
+    var rot_matrix = multiply_matrix(rot_matrix_x,rot_matrix_y);
+    rot_matrix = multiply_matrix(rot_matrix,rot_matrix_z);
     //Apply transformations
     result = multiply_matrix(matrix_id,shear_matrix);
     result = multiply_matrix(result,shear_matrix_2);
@@ -40,7 +44,7 @@ function transform() {
     //Get additional parameters for the command
     var billboard = document.getElementById("billboard").value;
     var anim_duration = document.getElementById("anim_duration").value;
-    anim_duration = anim_duration * 20;
+    anim_duration = Math.trunc(anim_duration * 20);
     var shadow_radius = document.getElementById("shadow_radius").value;
     var shadow_strength = document.getElementById("shadow_strength").value;
     var view_range = document.getElementById("view_range").value;
