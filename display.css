@@ -99,16 +99,27 @@ input[type=range]:focus {
   z-index: -1;
 }
 
+.cube_original {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  transition: transform: 1s;
+}
+
 .cube {
   width: 100%;
   height: 100%;
   position: relative;
+  top: -200px;
   transform-style: preserve-3d;
-  transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  transform: translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
   transition: transform 1s;
 }
 
-.cube__face {
+.cube .cube__face {
   position: absolute;
   width: 190px;
   height: 190px;
@@ -117,6 +128,18 @@ input[type=range]:focus {
   line-height: 200px;
   font-size: 30px;
   outline: 5px solid #000000;
+}
+.cube_original .cube__face {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  display: inline-block;
+  text-align:center;
+  line-height: 200px;
+  font-size: 30px;
+  opacity: 0.2;
+  filter: grayscale(0.6);
+  outline: 5px dotted #000000;
 }
 .cube__face--front  {
   background: rgba(255,0,0,0.5);
