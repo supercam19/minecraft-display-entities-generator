@@ -36,12 +36,13 @@ input[type=color] {
 
 .rotationContainer, .shearContainer, .scaleContainer, .translationContainer, .animationContainer {
   width: 250px;
-  border: 1px solid black;
+  border: 1px solid #333;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 10px;
   text-align: center;
   z-index: 5;
+  background-color: #333;
 }
 p {
   margin-top: 10px;
@@ -89,12 +90,14 @@ input[type=range]:focus {
   height: 200px;
   display: block;
   position: fixed;
-  top: 200px;
-  margin-left: 600px;
+  top: 300px;
+  margin-left: 800px;
+  border: 1px solid red;
   perspective: 600px;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+  z-index: -1;
 }
 
 .cube {
