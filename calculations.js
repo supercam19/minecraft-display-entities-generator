@@ -107,11 +107,13 @@ function resetTranslation() {
     document.getElementById('x_translate').value=0;
     document.getElementById('y_translate').value=0;
     document.getElementById('z_translate').value=0;
+    transform();
 }
 function center() {
     document.getElementById('x_translate').value= -document.getElementById('x_scale').value / 2;
     document.getElementById('y_translate').value= -document.getElementById('y_scale').value / 2;
     document.getElementById('z_translate').value= -document.getElementById('z_scale').value / 2;
+    transform();
 }
     
     
