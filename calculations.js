@@ -33,7 +33,7 @@ function transform() {
     result = multiply_matrix(result,rot_matrix);
 
     document.getElementsByClassName("cube")[0].style.transform = "matrix3d("+result[0][0]+","+result[1][0]+","+result[2][0]+","+result[3][0]+","+result[0][1]+","+result[1][1]+","+result[2][1]+","+result[3][1]+","+result[0][2]+","+result[1][2]+","+result[2][2]+","+result[3][2]+","+result[0][3]+","+result[1][3]+","+result[2][3]+","+result[3][3]+")"
-    document.getElementsByClassName("cube")[0].style.transform += " translateX("+x_offset*100+"px) translateY("+y_offset*100+"px) translateZ("+z_offset*100+"px)"
+    document.getElementsByClassName("cube")[0].style.transform += " translateX("+x_offset*100+"px) translateY("+-y_offset*100+"px) translateZ("+z_offset*100+"px)"
     result[0][3] = x_offset;
     result[1][3] = y_offset;
     result[2][3] = z_offset;
