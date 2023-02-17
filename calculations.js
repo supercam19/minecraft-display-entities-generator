@@ -86,6 +86,9 @@ function resetShear() {
     document.getElementById('x_shear').value=0;
     document.getElementById('y_shear').value=0;
     document.getElementById('z_shear').value=0;
+    document.getElementById('x_shear_2').value=0;
+    document.getElementById('y_shear_2').value=0;
+    document.getElementById('z_shear_2').value=0;
     transform();
 }
 function rotationStep(val) {
