@@ -29,8 +29,12 @@ function transform() {
     var rot_matrix_x =[[1,0,0,0],[0,Math.cos(x_rot),-Math.sin(x_rot),0],[0,Math.sin(x_rot),Math.cos(x_rot),0],[0,0,0,1]];
     var rot_matrix_y =[[Math.cos(y_rot),0,Math.sin(y_rot),0],[0,1,0,0],[-Math.sin(y_rot),0,Math.cos(y_rot),0],[0,0,0,1]];
     var rot_matrix_z = [[Math.cos(z_rot),-Math.sin(z_rot),0,0],[Math.sin(z_rot),Math.cos(z_rot),0,0],[0,0,1,0],[0,0,0,1]]
-    var rot_matrix = multiply_matrix(rot_matrix_x,rot_matrix_y);
-    rot_matrix = multiply_matrix(rot_matrix,rot_matrix_z);
+    var rot_matrix = multiply_matrix(rot_matrix_z,rot_matrix_y);
+    rot_matrix = multiply_matrix(rot_matrix,rot_matrix_x);
+    rot_matrix_x =[[1,0,0,0],[0,Math.cos(-x_rot),-Math.sin(-x_rot),0],[0,Math.sin(-x_rot),Math.cos(-x_rot),0],[0,0,0,1]];
+    rot_matrix_z = [[Math.cos(-z_rot),-Math.sin(-z_rot),0,0],[Math.sin(-z_rot),Math.cos(-z_rot),0,0],[0,0,1,0],[0,0,0,1]]
+    var rot_matrix_ingame = multiply_matrix(rot_matrix_z,rot_matrix_y);
+    rot_matrix_ingame = multiply_matrix(rot_matrix_ingame,rot_matrix_x);
     //Apply transformations
     result = multiply_matrix(matrix_id,shear_matrix);
     result = multiply_matrix(result,shear_matrix_2);
@@ -39,6 +43,9 @@ function transform() {
     document.getElementsByClassName("cube")[0].style.transform = "matrix3d("+result[0][0]+","+result[1][0]+","+result[2][0]+","+result[3][0]+","+result[0][1]+","+result[1][1]+","+result[2][1]+","+result[3][1]+","+result[0][2]+","+result[1][2]+","+result[2][2]+","+result[3][2]+","+result[0][3]+","+result[1][3]+","+result[2][3]+","+result[3][3]+")"
     document.getElementsByClassName("cube")[0].style.transform += " translateX("+x_offset*100+"px) translateY("+-y_offset*100+"px) translateZ("+z_offset*100+"px)"
     document.getElementsByClassName("cube_original")[0].style.transform = " translateX("+-x_offset*100+"px) translateY("+y_offset*100+"px) translateZ("+-z_offset*100+"px)"
+    result = multiply_matrix(matrix_id,shear_matrix);
+    result = multiply_matrix(result,shear_matrix_2);
+    result = multiply_matrix(result,rot_matrix_ingame);
     result[0][3] = x_offset;
     result[1][3] = y_offset;
     result[2][3] = z_offset;
@@ -50,7 +57,7 @@ function transform() {
     var shadow_strength = document.getElementById("shadow_strength").value;
     var view_range = document.getElementById("view_range").value;
     if (document.getElementById("override_glow").checked) {var glow = parseInt(document.getElementById("glow_color").value.substring(1),16);} else {var glow = 0;}
-    document.getElementById("commandOutput").value = "summon minecraft:block_display ~ ~ ~ {block_state:{Name:\"minecraft:stone\"},billboard:\""+billboard+"\",glow_color_override:"+glow+",interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f],view_range:"+view_range+"f,shadow_radius:"+shadow_radius+"f,shadow_strength:"+shadow_strength+"f}"
+    document.getElementById("commandOutput").value = "summon minecraft:block_display ~ ~2 ~ {block_state:{Name:\"minecraft:stone_stairs\"},billboard:\""+billboard+"\",glow_color_override:"+glow+",interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f],view_range:"+view_range+"f,shadow_radius:"+shadow_radius+"f,shadow_strength:"+shadow_strength+"f}"
 }
 
 function multiply_matrix(m1,m2) {
