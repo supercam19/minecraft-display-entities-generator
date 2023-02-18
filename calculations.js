@@ -36,16 +36,21 @@ function transform() {
     var rot_matrix_ingame = multiply_matrix(rot_matrix_z,rot_matrix_y);
     rot_matrix_ingame = multiply_matrix(rot_matrix_ingame,rot_matrix_x);
     //Apply transformations
-    result = multiply_matrix(matrix_id,shear_matrix);
+    var result = multiply_matrix(matrix_id,shear_matrix);
     result = multiply_matrix(result,shear_matrix_2);
     result = multiply_matrix(result,rot_matrix);
 
     document.getElementsByClassName("cube")[0].style.transform = "matrix3d("+result[0][0]+","+result[1][0]+","+result[2][0]+","+result[3][0]+","+result[0][1]+","+result[1][1]+","+result[2][1]+","+result[3][1]+","+result[0][2]+","+result[1][2]+","+result[2][2]+","+result[3][2]+","+result[0][3]+","+result[1][3]+","+result[2][3]+","+result[3][3]+")"
     document.getElementsByClassName("cube")[0].style.transform += " translateX("+x_offset*100+"px) translateY("+-y_offset*100+"px) translateZ("+z_offset*100+"px)"
     document.getElementsByClassName("cube_original")[0].style.transform = " translateX("+-x_offset*100+"px) translateY("+y_offset*100+"px) translateZ("+-z_offset*100+"px)"
-    result = multiply_matrix(matrix_id,shear_matrix);
+    var game_correction = [[-x_scale,0,0,0],[0,y_scale,0,0],[0,0,-z_scale,0],[0,0,0,1]]
+    shear_matrix = multiply_matrix(shear_matrix,game_correction);
+    shear_matrix_2 = multiply_matrix(shear_matrix_2,game_correction);
+    result = multiply_matrix(matrix_id,game_correction);
+    result = multiply_matrix(result,shear_matrix);
     result = multiply_matrix(result,shear_matrix_2);
     result = multiply_matrix(result,rot_matrix_ingame);
+    result = multiply_matrix(game_correction,result);
     result[0][3] = x_offset;
     result[1][3] = y_offset;
     result[2][3] = z_offset;
