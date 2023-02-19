@@ -1,3 +1,7 @@
+.shearContainer {
+  display: none;
+  visibility: hidden;
+}
 * {
   margin: 0;
 }
