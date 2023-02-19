@@ -24,7 +24,8 @@ function transform() {
     var z_offset = document.getElementById("z_translate").value
     //Set Base Matrices
     var matrix_id = [[x_scale,0,0,0],[0,y_scale,0,0],[0,0,z_scale,0],[0,0,0,1]]
-    var shear_matrix_2 = [[1,y_shear,z_shear,0],[x_shear,1,z_shear_2,0],[x_shear_2,y_shear_2,1,0],[0,0,0,1]]
+    var shear_matrix = [[1,x_shear,x_shear,0],[y_shear,1,y_shear,0],[z_shear,z_shear,1,0],[0,0,0,1]]
+    var shear_matrix_2 = [[1,y_shear_2,z_shear_2,0],[x_shear_2,1,z_shear_2,0],[x_shear_2,y_shear_2,1,0],[0,0,0,1]]
     var rot_matrix_x =[[1,0,0,0],[0,Math.cos(x_rot),-Math.sin(x_rot),0],[0,Math.sin(x_rot),Math.cos(x_rot),0],[0,0,0,1]];
     var rot_matrix_y =[[Math.cos(y_rot),0,Math.sin(y_rot),0],[0,1,0,0],[-Math.sin(y_rot),0,Math.cos(y_rot),0],[0,0,0,1]];
     var rot_matrix_z = [[Math.cos(z_rot),-Math.sin(z_rot),0,0],[Math.sin(z_rot),Math.cos(z_rot),0,0],[0,0,1,0],[0,0,0,1]]
@@ -35,7 +36,8 @@ function transform() {
     var rot_matrix_ingame = multiply_matrix(rot_matrix_z,rot_matrix_y);
     rot_matrix_ingame = multiply_matrix(rot_matrix_ingame,rot_matrix_x);
     //Apply transformations
-    var result = multiply_matrix(matrix_id,shear_matrix_2);
+    var result = multiply_matrix(matrix_id,shear_matrix);
+    result = multiply_matrix(result,shear_matrix_2);
     result = multiply_matrix(result,rot_matrix);
 
     document.getElementsByClassName("cube")[0].style.transform = "matrix3d("+result[0][0]+","+result[1][0]+","+result[2][0]+","+result[3][0]+","+result[0][1]+","+result[1][1]+","+result[2][1]+","+result[3][1]+","+result[0][2]+","+result[1][2]+","+result[2][2]+","+result[3][2]+","+result[0][3]+","+result[1][3]+","+result[2][3]+","+result[3][3]+")"
@@ -44,6 +46,7 @@ function transform() {
     var game_correction = [[-x_scale,0,0,0],[0,y_scale,0,0],[0,0,-z_scale,0],[0,0,0,1]]
     shear_matrix_2 = multiply_matrix(shear_matrix_2,game_correction);
     result = multiply_matrix(matrix_id,game_correction);
+    result = multiply_matrix(result,shear_matrix);
     result = multiply_matrix(result,shear_matrix_2);
     result = multiply_matrix(result,rot_matrix_ingame);
     result = multiply_matrix(game_correction,result);
@@ -128,6 +131,3 @@ function center() {
     document.getElementById('z_translate').value= -document.getElementById('z_scale').value / 2;
     transform();
 }
-    
-    
-    
