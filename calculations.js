@@ -44,7 +44,6 @@ function transform() {
     var game_correction = [[-x_scale,0,0,0],[0,y_scale,0,0],[0,0,-z_scale,0],[0,0,0,1]]
     shear_matrix_2 = multiply_matrix(shear_matrix_2,game_correction);
     result = multiply_matrix(matrix_id,game_correction);
-    result = multiply_matrix(result,shear_matrix);
     result = multiply_matrix(result,shear_matrix_2);
     result = multiply_matrix(result,rot_matrix_ingame);
     result = multiply_matrix(game_correction,result);
