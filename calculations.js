@@ -103,7 +103,7 @@ function generate_matrix(context) {
         var z_center = -document.getElementById('x_scale').value / 2;
         var et = document.getElementById("entityType").value;
         if (et == "block_display") {
-            var center_matrix = [[1,0,0,x_center,[0,1,0,y_center],[0,0,1,z_center],[0,0,0,1]];
+            var center_matrix = [[1,0,0,x_center],[0,1,0,y_center],[0,0,1,z_center],[0,0,0,1]];
             } else {
             var center_matrix = [[1,0,0,0],[0,1,0,y_center],[0,0,1,0],[0,0,0,1]];
             }
