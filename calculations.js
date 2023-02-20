@@ -101,19 +101,23 @@ function generate_matrix(context) {
         var x_center = -document.getElementById('x_scale').value / 2;
         var y_center = -document.getElementById('y_scale').value / 2;
         var z_center = -document.getElementById('z_scale').value / 2;
+        var translate_matrix = [[1,0,0,document.getElementById('x_translate').value],[0,1,0,document.getElementById('y_translate').value],[0,0,1,document.getElementById('z_translate').value],[0,0,0,1]]
         var et = document.getElementById("entityType").value;
         if (et == "block_display") {
             var center_matrix = [[1,0,0,x_center],[0,1,0,y_center],[0,0,1,z_center],[0,0,0,1]];
-            console.log(center_matrix);
             } else {
             var center_matrix = [[1,0,0,0],[0,1,0,y_center],[0,0,1,0],[0,0,0,1]];
             }
         var game_correction = [[-1,0,0,0],[0,1,0,0],[0,0,-1,0],[0,0,0,1]];
-        result = multiply_matrix(matrix_id,center_matrix);
-        result = multiply_matrix(result,game_correction);
+        result = multiply_matrix(matrix_id,game_correction);
+        result = multiply_matrix(result,center_matrix);
+        console.log(result);
+        result = multiply_matrix(result,translate_matrix);
+        console.log(result);
         result = multiply_matrix(result,shear_matrix);
         result = multiply_matrix(result,shear_matrix_2);
         result = multiply_matrix(result,rot_matrix);
+        console.log(result);
         result = multiply_matrix(game_correction,result);
     }
     return result
