@@ -30,10 +30,10 @@
       <option value="data">/data</option>
       <option value="execute_summon">/execute summon</option>
     </select>
-    <label for="block_id" class="block_display switch">Block ID:</label><input id="block_id" onchange="generate_command();" type="text" value="minecraft:stone" class="blockDisplay" />
-    <label for="item_id" class="item_display switch">Item ID:</label><input id="item_id" type="text" onchange="generate_command();" value="minecraft:diamond" class="itemDisplay" />
-    <label for="text_raw" class="text_display switch">Text (Raw):</label><input type="text" onchange="raw_to_json(this.value);generate_command();" class="textDisplay" value="Example" />
-    <label for="text_json" class="text_display switch">Text (JSON format):</label><input id="text_json" onchange="generate_command();" type="text" class="textDisplay" value='{"text":"Example","color":"red"}' />
+    <label for="block_id" class="block_display switch">Block ID:</label><input class="block_display switch" id="block_id" onchange="generate_command();" type="text" placeholder="minecraft:stone" value="minecraft:stone" />
+    <label for="item_id" class="item_display switch">Item ID:</label><input class="item_display switch" id="item_id" type="text" onchange="generate_command();" placeholder="minecraft:diamond" value="minecraft:diamond" />
+    <label for="text_raw" class="text_display switch">Text (Raw):</label><input class="text_display switch" type="text" onchange="raw_to_json(this.value);generate_command();" placeholder="Example" value="Example" />
+    <label for="text_json" class="text_display switch">Text (JSON format):</label><input class="text_display switch" id="text_json" onchange="generate_command();" type="text" placeholder='{"text":"Example","color":"red"}' value='{"text":"Example","color":"red"}' />
   </div>
 <div class="rotationContainer">
 <p>Rotation Parameters</p>
