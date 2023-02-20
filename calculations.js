@@ -110,14 +110,14 @@ function generate_matrix(context) {
             }
         var game_correction = [[-1,0,0,0],[0,1,0,0],[0,0,-1,0],[0,0,0,1]];
         result = multiply_matrix(matrix_id,game_correction);
-        result = multiply_matrix(result,center_matrix);
-        console.log(result);
+
         result = multiply_matrix(result,translate_matrix);
-        console.log(result);
+
         result = multiply_matrix(result,shear_matrix);
         result = multiply_matrix(result,shear_matrix_2);
         result = multiply_matrix(result,rot_matrix);
-        console.log(result);
+
+        result = multiply_matrix(result,center_matrix);
         result = multiply_matrix(game_correction,result);
     }
     return result
