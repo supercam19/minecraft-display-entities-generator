@@ -27,16 +27,16 @@ function generate_command() {
     var command = "";
     switch (ct) {
         case 'summon':
-            command ="summon minecraft:"+et+" ~ ~1 ~ {";
+            command ="summon minecraft:"+et+" ~ ~1.5 ~ {";
             break;
         case 'data':
             command = "data merge entity @e[type=minecraft:"+et+",limit=1,sort=nearest] {";
             break;
         case 'execute_summon':
-            command = "execute positioned ~ ~1 ~ summon minecraft:"+et+" run data merge entity @s {";
+            command = "execute positioned ~ ~1.5 ~ summon minecraft:"+et+" run data merge entity @s {";
             break;
         default:
-            command ="summon minecraft:stone ~ ~1 ~ {";
+            command ="summon minecraft:display_block ~ ~1.5 ~ {";
     }
     switch (et) {
         case 'block_display':
