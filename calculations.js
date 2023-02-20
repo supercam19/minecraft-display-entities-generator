@@ -119,11 +119,11 @@ function raw_to_json(text) {
 function modify_fields(type) {
     var fields = document.getElementsByClassName("switch");
     for (x=0; x <fields.length;x++) {
-    fields[x].style.visibility = none;
+    fields[x].style.visibility = "none";
     }
     var fields = document.getElementsByClassName(type);
     for (x=0; x <fields.length;x++) {
-    fields[x].style.visibility = visible;
+    fields[x].style.visibility = "visible";
     }
 }
 
