@@ -17,6 +17,24 @@
     <h1>Display Entities Generator</h1>
   </div>
   
+  <div class="globalOptions">
+      <label for="entityType" title="Select the type of entity you want to generate">Display Type:</label>
+    <select onchange="generate_command();modify_fields(this.value);" name="entityType" id="entityType">
+      <option value="block_display">Block Display</option>
+      <option value="item_display">Item Display</option>
+      <option value="text_display">Text Display</option>
+    </select>
+    <label for="commandType" title="Select the type of command you want">Command:</label>
+    <select onchange="generate_command()" name="commandType" id="commandType">
+      <option value="summon">/summon</option>
+      <option value="data">/data</option>
+      <option value="execute_summon">/execute summon</option>
+    </select>
+    <label for="block_id" class="block_display switch">Block ID:</label><input id="block_id" onchange="generate_command();" type="text" value="minecraft:stone" class="blockDisplay" />
+    <label for="item_id" class="item_display switch">Item ID:</label><input id="item_id" type="text" onchange="generate_command();" value="minecraft:diamond" class="itemDisplay" />
+    <label for="text_raw" class="text_display switch">Text (Raw):</label><input type="text" onchange="raw_to_json(this.value);generate_command();" class="textDisplay" value="Example" />
+    <label for="text_json" class="text_display switch">Text (JSON format):</label><input id="text_json" onchange="generate_command();" type="text" class="textDisplay" value='{"text":"Example","color":"red"}' />
+  </div>
 <div class="rotationContainer">
 <p>Rotation Parameters</p>
 <div class="slidecontainer">
@@ -72,19 +90,19 @@
   
   <div class="animationContainer">
     <p>Animation Duration (seconds):</p>
-    <input type="value" onchange="validate(this);transform();" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
+    <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
     <br />
     <p>Shadow Radius:</p>
-    <input type="value" onchange="validate(this);transform();" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
+    <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
     <br />
     <p>Shadow Opacity:</p>
-    <input type="value" onchange="validate(this);transform();" placeholder="1" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
+    <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
     <br />
     <p>View Range:</p>
-    <input type="value" onchange="validate(this);transform();" placeholder="1" value="1" min="0" max="10" class="animationValue" id="view_range" />
+    <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="10" class="animationValue" id="view_range" />
     <br />
     <label for="billboard" title="Change if the element should change its orientation with the camera">Billboard:</label>
-    <select onchange="transform();" name="billboard" id="billboard">
+    <select onchange="generate_command();" name="billboard" id="billboard">
       <option value="fixed">Fixed</option>
       <option value="vertical">Vertical</option>
       <option value="horizontal">Horizontal</option>
@@ -92,9 +110,9 @@
     </select> 
     <br />
     <label for="override_glow">Override Glowing Color?</label>
-    <input type="checkbox" onchange="transform();" id="override_glow" name="override_glow">
+    <input type="checkbox" onchange="generate_command();" id="override_glow" name="override_glow">
     <br />
-    <label>Custom Glowing Color: </label><input onchange="transform();" id="glow_color" type="color" />
+    <label>Custom Glowing Color: </label><input onchange="generate_command();" id="glow_color" type="color" />
   </div>
 
 <div class="outputContainer">
