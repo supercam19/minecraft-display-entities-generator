@@ -9,7 +9,7 @@ body {
   background-color: #222;
   color: #eee;
 }
-input[type=value] {
+input[type=value], input[type=text], select {
   background-color: #ddd;
   border: none;
   margin-bottom: 2px;
@@ -18,7 +18,15 @@ input[type=value] {
   text-align: center;
   display: inline-block;
 }
-input[type=value]:focus {
+input[type=text] {
+  text-align: left;
+  width: 150px;
+  margin-left: 6px;
+}
+select {
+  width: 100px;
+}
+input[type=value]:focus, input[type=text]:focus, select:focus {
   outline: 2px solid #00ffff;
 }
 input[type=color] {
@@ -37,7 +45,20 @@ input[type=color] {
   background: #660022;
   z-index: 10;
 }
-
+.globalOptions {
+  background-color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.globalOptions label {
+  margin-left: 20px;
+}
+input.text_display {
+  width: 200px;
+}
+#text_json {
+  width: 400px;
+}
 .rotationContainer, .shearContainer, .scaleContainer, .translationContainer, .animationContainer {
   width: 250px;
   border: 1px solid #333;
