@@ -99,11 +99,12 @@ function generate_matrix(context) {
     
     if (context == "game") {
         var x_center = -document.getElementById('x_scale').value / 2;
-        var y_center = -document.getElementById('x_scale').value / 2;
-        var z_center = -document.getElementById('x_scale').value / 2;
+        var y_center = -document.getElementById('y_scale').value / 2;
+        var z_center = -document.getElementById('z_scale').value / 2;
         var et = document.getElementById("entityType").value;
         if (et == "block_display") {
             var center_matrix = [[1,0,0,x_center],[0,1,0,y_center],[0,0,1,z_center],[0,0,0,1]];
+            console.log(center_matrix);
             } else {
             var center_matrix = [[1,0,0,0],[0,1,0,y_center],[0,0,1,0],[0,0,0,1]];
             }
@@ -114,9 +115,6 @@ function generate_matrix(context) {
         result = multiply_matrix(result,shear_matrix_2);
         result = multiply_matrix(result,rot_matrix);
         result = multiply_matrix(game_correction,result);
-        result[0][3] = x_offset;
-        result[1][3] = y_offset;
-        result[2][3] = z_offset;
     }
     return result
 }
