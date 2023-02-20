@@ -112,7 +112,7 @@ function generate_matrix(context) {
 }
 
 function raw_to_json(text) {
-    var json_text = "{\"text\":\"+text+\",\"color\":\"#ffffff\"}";
+    var json_text = "{\"text\":"+text+",\"color\":\"#ffffff\"}";
     document.getElementById("text_json").value = json_text;
 }
 
