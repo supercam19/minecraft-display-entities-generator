@@ -53,7 +53,7 @@ function generate_command() {
             var text_shadow = document.getElementById("text_shadow").checked;
             var bg_color = document.getElementById("text_background_color").value.substring(1);
             var bg_alpha = document.getElementById("text_background_color_alpha").value;
-            var text_opacity = document.getElementById("text_opacity").value - 128;
+            var text_opacity = +document.getElementById("text_opacity").value-128;
             var see_through = document.getElementById("text_see_through").checked;
             text = text.replace(/\\/g,`\\\\`);
             text = text.replace(/"/g,`\\"`);
