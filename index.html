@@ -92,11 +92,20 @@
     <p>Animation Duration (seconds):</p>
     <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
     <br />
+    <div class="text_display switch">
+      <label for="text_shadow">Shadow?</label>
+      <input type="checkbox" onchange="generate_command();" id="text_shadow" name="text_shadow">
+      <br />
+    </div>
     <p>Shadow Radius:</p>
     <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
     <br />
     <p>Shadow Opacity:</p>
     <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
+    <br />
+    <p>Culling Width & Height</p>
+    <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-31000000" max="31000000" class="animationValue" id="culling_width" />
+    <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-31000000" max="31000000" class="animationValue" id="culling_height" />
     <br />
     <p>View Range:</p>
     <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="10" class="animationValue" id="view_range" />
@@ -115,7 +124,29 @@
     <label for="override_glow">Override Glowing Color?</label>
     <input type="checkbox" onchange="generate_command();" id="override_glow" name="override_glow">
     <br />
-    <label>Custom Glowing Color: </label><input onchange="generate_command();" id="glow_color" type="color" />
+    <p>Custom Glowing Color: </p>
+    <input onchange="generate_command();" id="glow_color" type="color" />
+    <div class="text_display switch">
+      <label for="text_default_background">Use Default Background?</label>
+      <input type="checkbox" onchange="generate_command();" id="text_default_background" name="text_default_background">
+      <p>Custom Background Color:</p>
+      <input onchange="generate_command();" id="text_background_color" type="color" />
+      <br />
+      <input onchange="generate_command();" id="text_background_color_alpha" type="range" min="0" max="255" value="255" step="1" />
+      <br />
+      <p>Text alignment</p>
+      <select onchange="generate_command();" id="text_alignment">
+        <option value="center">Center</option>
+        <option value="center">Left</option>
+        <option value="center">Right</option>
+      </select>
+      <br />
+      <p>Line Width</p>
+      <input type="value" onchange="validate(this);generate_command();" placeholder="200" value="200" min="0" max="31000000" id="text_line_length" />
+      <br />
+      <label for="text_see_through">See through blocks?</label>
+      <input type="checkbox" onchange="generate_command();" id="text_see_through" name="text_see_through" />
+    </div>
   </div>
 
 <div class="outputContainer">
