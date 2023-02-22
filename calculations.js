@@ -47,9 +47,28 @@ function generate_command() {
             break;
         case 'text_display':
             var text = document.getElementById("text_json").value;
+            var text_alignment = document.getElementById("text_alignment").value;
+            var line_length = document.getElementById("text_line_length").value;
+            var default_bg = document.getElementById("text_default_background").checked;
+            var text_shadow = document.getElementById("text_shadow").checked;
+            var bg_color = document.getElementById("text_background_color").value.substring(1);
+            var bg_alpha = document.getElementById("text_background_color_alpha").value;
+            var text_opacity = document.getElementById("text_opacity").value - 128;
+            var see_through = document.getElementById("text_see_through").checked;
             text = text.replace(/\\/g,`\\\\`);
             text = text.replace(/"/g,`\\"`);
             command += "text:\""+text+"\""
+            if (text_alignment != "center") {command += ", text_alignment:"+text_alignment;}
+            if (line_length != 200) {command += ", line_width:" + line_length;}
+            if (text_opacity != -1) {command += ", text_opacity:" + line_length;}
+            if (see_through) {command += ", see_through: 1b";}
+            if (text_shadow) {command += ", shadow: 1b";}
+            if (default_bg == false) {
+                var alpha_hex = parseInt(bg_alpha).toString(16)
+                bg_color = alpha_hex + bg_color;
+                bg_color = parseInt(bg_color,16);
+                command += ",background: " + bg_color - 285960729237;
+            }
             break;
         default:
             command += "block_state:{Name:\""+document.getElementById("block_id").value;+"\"},";
@@ -60,9 +79,9 @@ function generate_command() {
         command = command + ",glow_color_override:"+glow;
     }
     command = command + ",interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f]";
-    if (view_range =! 1) {command = command + ",view_range:"+view_range+"f";}
-    if (shadow_radius =! 1) {command = command + ",shadow_radius:"+shadow_radius+"f";}
-    if (shadow_strength =! 1) {command = command + ",shadow_strength:"+shadow_strength+"f";}
+    if (view_range != 1) {command = command + ",view_range:"+view_range+"f";}
+    if (shadow_radius != 1) {command = command + ",shadow_radius:"+shadow_radius+"f";}
+    if (shadow_strength != 1) {command = command + ",shadow_strength:"+shadow_strength+"f";}
     document.getElementById("commandOutput").value = command +"}";
 }
 
