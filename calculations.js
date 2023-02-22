@@ -40,21 +40,21 @@ function generate_command() {
     }
     switch (et) {
         case 'block_display':
-            command += "block_state:{Name:\""+document.getElementById("block_id").value+"\"},";
+            command += "block_state:{Name:\""+document.getElementById("block_id").value+"\"}";
             break;
         case 'item_display':
-            command += "item:{id:\""+document.getElementById("item_id").value+"\",Count:1s},";
+            command += "item:{id:\""+document.getElementById("item_id").value+"\",Count:1s}";
             break;
         case 'text_display':
             var text = document.getElementById("text_json").value;
             text = text.replace(/\\/g,`\\\\`);
             text = text.replace(/"/g,`\\"`);
-            command += "text:\""+text+"\","
+            command += "text:\""+text+"\""
             break;
         default:
             command += "block_state:{Name:\""+document.getElementById("block_id").value;+"\"},";
     }
-    document.getElementById("commandOutput").value = command + "billboard:\""+billboard+"\""
+    command = command + ",billboard:\""+billboard+"\"";
     if(is_glowing == true) {command = command + ",Glowing:1b"};
     if (glow >= 0) {
         command = command + ",glow_color_override:"+glow;
