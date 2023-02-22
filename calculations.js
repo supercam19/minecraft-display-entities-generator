@@ -67,9 +67,7 @@ function generate_command() {
             if (default_bg == false) {
                 if (bg_alpha > 127) {bg_alpha = 2*(bg_alpha-128)-bg_alpha};
                 var alpha_hex = parseInt(bg_alpha).toString(16)
-                console.log(alpha_hex);
                 bg_color = [alpha_hex,bg_color].join('');
-                console.log(bg_color);
                 bg_color = parseInt(bg_color,16);
                 command += ",background: " + bg_color.toString();
             }
