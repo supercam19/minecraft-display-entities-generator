@@ -20,8 +20,8 @@ function generate_command() {
     var shadow_radius = document.getElementById("shadow_radius").value;
     var shadow_strength = document.getElementById("shadow_strength").value;
     var view_range = document.getElementById("view_range").value;
-    if (document.getElementById("override_glow").checked) {var glow = parseInt(document.getElementById("glow_color").value.substring(1),16);} else {var glow = 0;}
-    
+    if (document.getElementById("override_glow").checked) {var glow = parseInt(document.getElementById("glow_color").value.substring(1),16);} else {var glow = -1;}
+    var is_glowing = document.getElementById("is_glowing").checked;
     var ct = document.getElementById("commandType").value;
     var et = document.getElementById("entityType").value;
     var command = "";
@@ -54,7 +54,16 @@ function generate_command() {
         default:
             command += "block_state:{Name:\""+document.getElementById("block_id").value;+"\"},";
     }
-    document.getElementById("commandOutput").value = command + "billboard:\""+billboard+"\",glow_color_override:"+glow+",interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f],view_range:"+view_range+"f,shadow_radius:"+shadow_radius+"f,shadow_strength:"+shadow_strength+"f}"
+    document.getElementById("commandOutput").value = command + "billboard:\""+billboard+"\""
+    if(is_glowing = true) {command = command + ",Glowing:1b"};
+    if (glow >= 0) {
+        command = command + ",glow_color_override:"+glow;
+    }
+    command = command + ",interpolation_duration:"+anim_duration+",interpolation_start:-1,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f]";
+    if (view_range =! 1) {command = command + ",view_range:"+view_range+"f";}
+    if (shadow_radius =! 1) {command = command + ",shadow_radius:"+shadow_radius+"f";}
+    if (shadow_strength =! 1) {command = command + ",shadow_strength:"+shadow_strength+"f";}
+    document.getElementById("commandOutput").value = command +"}";
 }
 
 function generate_matrix(context) {
