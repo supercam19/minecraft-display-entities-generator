@@ -55,7 +55,7 @@ function generate_command() {
             command += "block_state:{Name:\""+document.getElementById("block_id").value;+"\"},";
     }
     document.getElementById("commandOutput").value = command + "billboard:\""+billboard+"\""
-    if(is_glowing = true) {command = command + ",Glowing:1b"};
+    if(is_glowing == true) {command = command + ",Glowing:1b"};
     if (glow >= 0) {
         command = command + ",glow_color_override:"+glow;
     }
