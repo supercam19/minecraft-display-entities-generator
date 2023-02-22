@@ -43,7 +43,9 @@ function generate_command() {
             command += "block_state:{Name:\""+document.getElementById("block_id").value+"\"}";
             break;
         case 'item_display':
+            var item_display_pov = document.getElementById("item_display_pov").value;
             command += "item:{id:\""+document.getElementById("item_id").value+"\",Count:1s}";
+            if (item_display_pov =! "default") {command += ", item_display:" + item_display_pov;}
             break;
         case 'text_display':
             var text = document.getElementById("text_json").value;
@@ -77,7 +79,7 @@ function generate_command() {
         default:
             command += "block_state:{Name:\""+document.getElementById("block_id").value;+"\"},";
     }
-    command = command + ",billboard:\""+billboard+"\"";
+    if (billboard != "default") {command = command + ",billboard:\""+billboard+"\"";}
     if(is_glowing == true) {command = command + ",Glowing:1b"};
     if (glow >= 0) {
         command = command + ",glow_color_override:"+glow;
