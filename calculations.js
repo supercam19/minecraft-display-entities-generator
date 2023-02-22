@@ -69,7 +69,9 @@ function generate_command() {
                 var alpha_hex = parseInt(bg_alpha).toString(16)
                 bg_color = [alpha_hex,bg_color].join('');
                 bg_color = parseInt(bg_color,16);
-                command += ",background: " + bg_color.toString();
+                if(bg_color != 1073741824) {command += ",background: " + bg_color.toString();}
+            } else {
+                command += ", default_background: 1b";
             }
             break;
         default:
