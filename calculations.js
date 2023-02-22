@@ -53,7 +53,8 @@ function generate_command() {
             var text_shadow = document.getElementById("text_shadow").checked;
             var bg_color = document.getElementById("text_background_color").value.substring(1);
             var bg_alpha = document.getElementById("text_background_color_alpha").value;
-            var text_opacity = +document.getElementById("text_opacity").value-128;
+            var text_opacity = +document.getElementById("text_opacity").value;
+            if (text_opacity > 127) {text_opacity = 2*(text_opacity-128)-text_opacity}
             var see_through = document.getElementById("text_see_through").checked;
             text = text.replace(/\\/g,`\\\\`);
             text = text.replace(/"/g,`\\"`);
@@ -64,10 +65,13 @@ function generate_command() {
             if (see_through) {command += ", see_through: 1b";}
             if (text_shadow) {command += ", shadow: 1b";}
             if (default_bg == false) {
+                if (bg_alpha > 127) {bg_alpha = 2*(bg_alpha-128)-bg_alpha};
                 var alpha_hex = parseInt(bg_alpha).toString(16)
-                bg_color = alpha_hex + bg_color;
+                console.log(alpha_hex);
+                bg_color = [alpha_hex,bg_color].join('');
+                console.log(bg_color);
                 bg_color = parseInt(bg_color,16);
-                command += ",background: " + bg_color - 285960729237;
+                command += ",background: " + bg_color.toString();
             }
             break;
         default:
