@@ -1,7 +1,9 @@
-# matrix-transformation
-Attempt to have a small tool to rotate, shear, translate... 3d items with fancy controls
+# Minecraft Display Entities Generator
 
-This is intended yo be used with Minecraft Display Entities added to Minecraft Java 1.19.4.
+This tool allows you to generate command for the display entities added with Minecraft 1.19.4.
+
+You can preview the different transformations you are going to apply and can even generate complex transformations.
+
 
 ### Access the tool
-https://mlakuss.github.io/matrix-transformation/
+https://mlakuss.github.io/minecraft-display-entities-generator/
