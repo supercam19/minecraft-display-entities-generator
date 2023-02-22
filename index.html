@@ -112,6 +112,7 @@
     <br />
     <label for="billboard" title="Change if the element should change its orientation with the camera">Billboard:</label>
     <select onchange="generate_command();" name="billboard" id="billboard">
+      <option value="default">Default</option>
       <option value="fixed">Fixed</option>
       <option value="vertical">Vertical</option>
       <option value="horizontal">Horizontal</option>
@@ -127,6 +128,19 @@
     <p>Custom Glowing Color: </p>
     <input onchange="generate_command();" id="glow_color" type="color" />
     <br />
+    <p class="switch item_display">Item display</p>
+    <select class="switch item_display" id="item_display_pov">
+      <option value="default">Default</option>
+      <option value="fixed">Fixed</option>
+      <option value=none>None</option>
+      <option value="gui">GUI</option>
+      <option value="ground">Ground</option>
+      <option value="head">Head</option>
+      <option value="firstperson_righthand">1st Person - Right Hand</option>
+      <option value="firstperson_lefthand">1st Person - Left Hand</option>
+      <option value="thirdperson_righthand">3rd Person - Right Hand</option>
+      <option value="thirdperson_lefthand">3rd Person - Left Hand</option>
+    </select>
     <div class="text_display switch">
       <p>Text Opacity</p>
       <input type="range" min="0" max="255" step="1" value="255" onchange="generate_command();" id="text_opacity" />
