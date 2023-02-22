@@ -60,7 +60,7 @@ function generate_command() {
             command += "text:\""+text+"\""
             if (text_alignment != "center") {command += ", text_alignment:"+text_alignment;}
             if (line_length != 200) {command += ", line_width:" + line_length;}
-            if (text_opacity != -1) {command += ", text_opacity:" + line_length;}
+            if (text_opacity != -1) {command += ", text_opacity:" + text_opacity;}
             if (see_through) {command += ", see_through: 1b";}
             if (text_shadow) {command += ", shadow: 1b";}
             if (default_bg == false) {
