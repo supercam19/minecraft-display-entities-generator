@@ -128,12 +128,15 @@
     <input onchange="generate_command();" id="glow_color" type="color" />
     <br />
     <div class="text_display switch">
+      <p>Text Opacity</p>
+      <input type="range" min="0" max="255" step="1" onchange="generate_command();" id="text_opacity" />
+      <br />
       <label for="text_default_background">Use Default Background?</label>
       <input type="checkbox" onchange="generate_command();" id="text_default_background" name="text_default_background">
       <p>Custom Background Color:</p>
       <input onchange="generate_command();" id="text_background_color" type="color" />
       <br />
-      <input onchange="generate_command();" id="text_background_color_alpha" type="range" min="0" max="255" value="255" step="1" />
+      <input onchange="generate_command();document.getElementById('text_background_color').style.opacity = this.value/255;" id="text_background_color_alpha" type="range" min="0" max="255" value="255" step="1" />
       <br />
       <p>Text alignment</p>
       <select onchange="generate_command();" id="text_alignment">
