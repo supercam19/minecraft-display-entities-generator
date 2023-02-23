@@ -249,3 +249,9 @@ function center() {
     document.getElementById('z_translate').value= -document.getElementById('z_scale').value / 2;
     transform();
 }
+function copyToClipboard() {
+  var copyText = document.getElementById("commandOutput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+  navigator.clipboard.writeText(copyText.value);
+} 
