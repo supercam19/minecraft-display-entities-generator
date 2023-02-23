@@ -35,6 +35,7 @@
     <label for="text_raw" class="text_display switch">Text (Raw):</label><input class="text_display switch" type="text" onchange="raw_to_json(this.value);generate_command();" placeholder="Example" value="Example" />
     <label for="text_json" class="text_display switch">Text (JSON format):</label><input class="text_display switch" id="text_json" onchange="generate_command();" type="text" placeholder='{"text":"Example","color":"red"}' value='{"text":"Example","color":"red"}' />
   </div>
+<div>
 <div class="rotationContainer">
 <p>Rotation Parameters</p>
 <div class="slidecontainer">
@@ -89,14 +90,13 @@
   </div>
   
   <div class="animationContainer">
+    <div class="toggle"><h3>Display Options</h3></div>
     <p>Animation Duration (seconds):</p>
     <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
     <br />
-    <div class="text_display switch">
-      <label for="text_shadow">Shadow?</label>
-      <input type="checkbox" onchange="generate_command();" id="text_shadow" name="text_shadow">
-      <br />
-    </div>
+    <p>Custom Brightness (Sky/Block)</p>
+    <input type="value" onchange="validate(this);generate_command();if(this.value == -1) {this.value ==\"\"};" placeholder="-1" value="" min="-1" max="15" class="animationValue" id="sky_light" />
+    <input type="value" onchange="validate(this);generate_command();if(this.value == -1) {this.value ==\"\"};" placeholder="" value="" min="-1" max="15" class="animationValue" id="block_light" />
     <p>Shadow Radius:</p>
     <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
     <br />
@@ -142,6 +142,10 @@
       <option value="thirdperson_lefthand">3rd Person - Left Hand</option>
     </select>
     <div class="text_display switch">
+      <div class="toggle"><h3>Text Options</h3></div>
+      <label for="text_shadow">Shadow?</label>
+      <input type="checkbox" onchange="generate_command();" id="text_shadow" name="text_shadow">
+      <br />
       <p>Text Opacity</p>
       <input type="range" min="0" max="255" step="1" value="255" onchange="generate_command();" id="text_opacity" />
       <br />
@@ -168,7 +172,8 @@
   </div>
 
 <div class="outputContainer">
-<textarea id="commandOutput" name="commandOutput" rows="4" cols="50" readonly>summon minecraft:block_display ~ ~ ~ {block_state:{Name:"minecraft:stone"},billboard:"fixed",glow_color_override:0,interpolation_duration:0,interpolation_start:-1,transformation:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],view_range:1.0f,shadow_radius:1,shadow_strength:1}</textarea>
+  <div onclick="copyToClipboard();" id="copyButton">Copy to clipboard</div>
+<textarea id="commandOutput" name="commandOutput" rows="6" cols="100" readonly>summon minecraft:block_display ~ ~ ~ {block_state:{Name:"minecraft:stone"},billboard:"fixed",glow_color_override:0,interpolation_duration:0,interpolation_start:-1,transformation:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],view_range:1.0f,shadow_radius:1,shadow_strength:1}</textarea>
 </div>
 
    <div class="scene">
