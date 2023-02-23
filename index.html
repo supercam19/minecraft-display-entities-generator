@@ -48,7 +48,7 @@
   <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('z_rot_val').innerHTML=this.value + '°'" id="z_rotation" /><label id="z_rot_val" for="z_rotation">0°</label>
 </div>
   <span>Step: </span>
-  <input type="number" min="0.1" step="1" max="10" value="5" class="smallInput" onchange="rotationStep(this.value)" />
+  <input type="number" min="0" step="1" max="10" value="5" class="smallInput" onchange="rotationStep(this.value)" />
   <br />
   <button onclick="resetRotation()">Reset</button>
 </div>
