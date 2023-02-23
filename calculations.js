@@ -90,9 +90,13 @@ function generate_command() {
     if (view_range != 1) {command = command + ",view_range:"+view_range+"f";}
     if (shadow_radius != 1) {command = command + ",shadow_radius:"+shadow_radius+"f";}
     if (shadow_strength != 1) {command = command + ",shadow_strength:"+shadow_strength+"f";}
+    if (sky_light < 0 || isNaN(sky_light)) {sky_light = -1;}
+    if (block_light < 0 || isNaN(block_light)) {sky_light = -1;}
+    if (sky_light > 15) {sky_light = 15;}
+    if (block_light > 15) {block_light = 15;}
     if (sky_light != -1 || block_light != -1) {
         if (sky_light == -1) {sky_light = 0;}
-        if (block_light == -1) {sky_light = 0;}
+        if (block_light == -1) {block_light = 0;}
         command = command + ",brightness:{sky:"+sky_light+",block:"+block_light+"}"
     }
     document.getElementById("commandOutput").value = command +"}";
