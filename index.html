@@ -95,8 +95,8 @@
     <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
     <br />
     <p>Custom Brightness (Sky/Block)</p>
-    <input type="value" onchange="validate(this);generate_command();if(this.value == -1) {this.value ==\"\"};" placeholder="-1" value="" min="-1" max="15" class="animationValue" id="sky_light" />
-    <input type="value" onchange="validate(this);generate_command();if(this.value == -1) {this.value ==\"\"};" placeholder="" value="" min="-1" max="15" class="animationValue" id="block_light" />
+    <input type="value" onchange="generate_command();" placeholder="" value="" min="0" max="15" class="animationValue" id="sky_light" />
+    <input type="value" onchange="generate_command();" placeholder="" value="" min="0" max="15" class="animationValue" id="block_light" />
     <p>Shadow Radius:</p>
     <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
     <br />
