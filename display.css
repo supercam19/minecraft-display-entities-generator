@@ -27,7 +27,7 @@ input[type=text] {
 select {
   width: 100px;
 }
-input[type=value]:focus, input[type=text]:focus, select:focus {
+input[type=value]:focus, input[type=number]:focus, input[type=text]:focus, select:focus {
   outline: 2px solid #00ffff;
 }
 input[type=color] {
