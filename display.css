@@ -14,7 +14,7 @@ input[type=number],input[type=value], input[type=text], select {
   border: none;
   margin-bottom: 2px;
   margin-top: 2px;
-  width: 40px;
+  width: 50px;
   text-align: center;
   display: inline-block;
 }
