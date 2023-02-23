@@ -9,7 +9,7 @@ body {
   background-color: #222;
   color: #eee;
 }
-input[type=value], input[type=text], select {
+input[type=number],input[type=value], input[type=text], select {
   background-color: #ddd;
   border: none;
   margin-bottom: 2px;
