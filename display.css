@@ -8,6 +8,7 @@
 body {
   background-color: #222;
   color: #eee;
+  font-family: Tahoma, sans-serif;
 }
 input[type=number],input[type=value], input[type=text], select {
   background-color: #ddd;
@@ -47,8 +48,11 @@ input[type=color] {
 }
 .globalOptions {
   background-color: #333;
+  position: sticky;
+  top: 59px;
   padding-top: 10px;
   padding-bottom: 10px;
+  z-index: 2;
 }
 .globalOptions label {
   margin-left: 20px;
