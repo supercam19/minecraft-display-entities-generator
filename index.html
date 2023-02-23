@@ -48,7 +48,7 @@
   <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('z_rot_val').innerHTML=this.value + '°'" id="z_rotation" /><label id="z_rot_val" for="z_rotation">0°</label>
 </div>
   <span>Step: </span>
-  <input type="value" min="0.1" max="10" value="5" class="smallInput" onchange="rotationStep(this.value)" />
+  <input type="number" min="0.1" step="1" max="10" value="5" class="smallInput" onchange="rotationStep(this.value)" />
   <br />
   <button onclick="resetRotation()">Reset</button>
 </div>
@@ -73,18 +73,18 @@
 
 <div class="scaleContainer">
   <p>Scaling Parameters</p>
-  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="x_scale" /><br/>
-  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="y_scale" /><br/>
-  <input type="value" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="z_scale" />
+  <input type="number" step="0.1" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="x_scale" /><br/>
+  <input type="number" step="0.1" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="y_scale" /><br/>
+  <input type="number" step="0.1" value="1" placeholder="1" min="-100" max="100" onchange="validate(this);transform();" class="scalingValue" id="z_scale" />
   <br />
   <button onclick="resetScale()">Reset</button>
 </div>
 
   <div class="translationContainer">
     <p>Translation Parameters</p>
-    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="x_translate" /><br/>
-    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="y_translate" /><br/>
-    <input type="value" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="z_translate" />
+    <input type="number" step="0.1" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="x_translate" /><br/>
+    <input type="number" step="0.1" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="y_translate" /><br/>
+    <input type="number" step="0.1" value="0" placeholder="0" min="-250" max="250" onchange="validate(this);transform();" class="translationValue" id="z_translate" />
     <br />
     <button onclick="resetTranslation()">Reset</button>
   </div>
@@ -92,23 +92,23 @@
   <div class="animationContainer">
     <div class="toggle"><h3>Display Options</h3></div>
     <p>Animation Duration (seconds):</p>
-    <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
+    <input type="number" step="0.5" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-1" max="3600" class="animationValue" id="anim_duration" />
     <br />
     <p>Custom Brightness (Sky/Block)</p>
-    <input type="value" onchange="generate_command();" placeholder="" value="" min="0" max="15" class="animationValue" id="sky_light" />
-    <input type="value" onchange="generate_command();" placeholder="" value="" min="0" max="15" class="animationValue" id="block_light" />
+    <input type="number" step="1" onchange="generate_command();" placeholder="" value="" min="0" max="15" class="animationValue" id="sky_light" />
+    <input type="number" step="1" onchange="generate_command();" placeholder="" value="" min="0" max="15" class="animationValue" id="block_light" />
     <p>Shadow Radius:</p>
-    <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
+    <input type="number" step="0.1" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="64" class="animationValue" id="shadow_radius" />
     <br />
     <p>Shadow Opacity:</p>
-    <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
+    <input type="number" step="0.1" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="1" class="animationValue" id="shadow_strength" />
     <br />
     <p>Culling Width & Height</p>
-    <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-31000000" max="31000000" class="animationValue" id="culling_width" />
-    <input type="value" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-31000000" max="31000000" class="animationValue" id="culling_height" />
+    <input type="number" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-31000000" max="31000000" class="animationValue" id="culling_width" />
+    <input type="number" step="1" onchange="validate(this);generate_command();" placeholder="0" value="0" min="-31000000" max="31000000" class="animationValue" id="culling_height" />
     <br />
     <p>View Range:</p>
-    <input type="value" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="10" class="animationValue" id="view_range" />
+    <input type="number" step="0.1" onchange="validate(this);generate_command();" placeholder="1" value="1" min="0" max="10" class="animationValue" id="view_range" />
     <br />
     <label for="billboard" title="Change if the element should change its orientation with the camera">Billboard:</label>
     <select onchange="generate_command();" name="billboard" id="billboard">
@@ -164,7 +164,7 @@
       </select>
       <br />
       <p>Line Width</p>
-      <input type="value" onchange="validate(this);generate_command();" placeholder="200" value="200" min="0" max="31000000" id="text_line_length" />
+      <input type="number" step="1" onchange="validate(this);generate_command();" placeholder="200" value="200" min="0" max="31000000" id="text_line_length" />
       <br />
       <label for="text_see_through">See through blocks?</label>
       <input type="checkbox" onchange="generate_command();" id="text_see_through" name="text_see_through" />
