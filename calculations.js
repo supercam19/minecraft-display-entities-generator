@@ -14,6 +14,8 @@ function generate_command() {
 
     var result = generate_matrix("game");
     //Get additional parameters for the command
+    var sky_light = Math.trunc(document.getElementById("sky_light").value) || -1;
+    var block_light = Math.trunc(document.getElementById("block_light").value) || -1;
     var billboard = document.getElementById("billboard").value;
     var anim_duration = document.getElementById("anim_duration").value;
     anim_duration = Math.trunc(anim_duration * 20);
@@ -88,6 +90,11 @@ function generate_command() {
     if (view_range != 1) {command = command + ",view_range:"+view_range+"f";}
     if (shadow_radius != 1) {command = command + ",shadow_radius:"+shadow_radius+"f";}
     if (shadow_strength != 1) {command = command + ",shadow_strength:"+shadow_strength+"f";}
+    if (sky_light != -1 || block_light != -1) {
+        if (sky_light == -1) {sky_light = 0;}
+        if (block_light == -1) {sky_light = 0;}
+        command = command + ",brightness:{sky:"+sky_light+",block:"+block_light+"}"
+    }
     document.getElementById("commandOutput").value = command +"}";
 }
 
