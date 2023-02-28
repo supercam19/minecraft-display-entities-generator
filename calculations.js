@@ -29,7 +29,7 @@ function generate_command() {
     var command = "";
     switch (ct) {
         case 'summon':
-            command ="summon minecraft:"+et+" ~ ~1.5 ~ {";
+            command ="summon minecraft:"+et+" ~ ~1 ~ {";
             break;
         case 'data':
             command = "data merge entity @e[type=minecraft:"+et+",limit=1,sort=nearest] {";
@@ -143,9 +143,9 @@ function generate_matrix(context) {
     result = multiply_matrix(result,rot_matrix);
     
     if (context == "game") {
-        var x_center = -document.getElementById('x_scale').value / 2;
+        var x_center = document.getElementById('x_scale').value / 2;
         var y_center = -document.getElementById('y_scale').value / 2;
-        var z_center = -document.getElementById('z_scale').value / 2;
+        var z_center = document.getElementById('z_scale').value / 2;
         var translate_matrix = [[1,0,0,document.getElementById('x_translate').value],[0,1,0,document.getElementById('y_translate').value],[0,0,1,document.getElementById('z_translate').value],[0,0,0,1]]
         var et = document.getElementById("entityType").value;
         if (et == "block_display") {
