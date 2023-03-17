@@ -156,13 +156,13 @@ function generate_matrix(context) {
         var game_correction = [[-1,0,0,0],[0,1,0,0],[0,0,-1,0],[0,0,0,1]];
         result = multiply_matrix(matrix_id,game_correction);
 
-        result = multiply_matrix(translate_matrix,result);
+        result = multiply_matrix(center_matrix,result);
 
         result = multiply_matrix(shear_matrix,result);
         result = multiply_matrix(shear_matrix_2,result);
         result = multiply_matrix(result,rot_matrix);
 
-        result = multiply_matrix(center_matrix,result);
+        result = multiply_matrix(translate_matrix,result);
         result = multiply_matrix(game_correction,result);
     }
     return result
