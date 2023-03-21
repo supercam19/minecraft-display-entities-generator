@@ -11,7 +11,7 @@ function transform() {
 }
 
 function generate_command() {
-
+	var mtx_prc = 3;
     var result = generate_matrix("game");
     //Get additional parameters for the command
     var sky_light = Math.trunc(document.getElementById("sky_light").value) || -1;
@@ -86,7 +86,12 @@ function generate_command() {
     if (glow >= 0) {
         command = command + ",glow_color_override:"+glow;
     }
-    command = command + ",interpolation_duration:"+anim_duration+",start_interpolation:0,transformation:["+result[0][0]+"f,"+result[0][1]+"f,"+result[0][2]+"f,"+result[0][3]+"f,"+result[1][0]+"f,"+result[1][1]+"f,"+result[1][2]+"f,"+result[1][3]+"f,"+result[2][0]+"f,"+result[2][1]+"f,"+result[2][2]+"f,"+result[2][3]+"f,"+result[3][0]+"f,"+result[3][1]+"f,"+result[3][2]+"f,"+result[3][3]+"f]";
+    command = `${command},interpolation_duration:${anim_duration},start_interpolation:0,transformation:[\
+${Number(result[0][0]).toFixed(mtx_prc)}f, ${Number(result[0][1]).toFixed(mtx_prc)}f, ${Number(result[0][2]).toFixed(mtx_prc)}f,${Number(result[0][3]).toFixed(mtx_prc)}f,\
+${Number(result[1][0]).toFixed(mtx_prc)}f, ${Number(result[1][1]).toFixed(mtx_prc)}f, ${Number(result[1][2]).toFixed(mtx_prc)}f,${Number(result[1][3]).toFixed(mtx_prc)}f,\
+${Number(result[2][0]).toFixed(mtx_prc)}f, ${Number(result[2][1]).toFixed(mtx_prc)}f, ${Number(result[2][2]).toFixed(mtx_prc)}f,${Number(result[2][3]).toFixed(mtx_prc)}f,\
+${Number(result[3][0]).toFixed(mtx_prc)}f, ${Number(result[3][1]).toFixed(mtx_prc)}f, ${Number(result[3][2]).toFixed(mtx_prc)}f,${Number(result[3][3]).toFixed(mtx_prc)}f\
+]`;
     if (view_range != 1) {command = command + ",view_range:"+view_range+"f";}
     if (shadow_radius != 1) {command = command + ",shadow_radius:"+shadow_radius+"f";}
     if (shadow_strength != 1) {command = command + ",shadow_strength:"+shadow_strength+"f";}
