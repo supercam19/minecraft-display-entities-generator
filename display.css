@@ -21,8 +21,9 @@ input[type=number],input[type=value], input[type=text], select {
 }
 input[type=text] {
   text-align: left;
-  width: 150px;
-  margin-left: 6px;
+  width: 4ch;
+  padding-left: 0px;
+  margin-left: 1px;
 }
 select {
   width: 100px;
@@ -128,6 +129,11 @@ input[type=range]:focus {
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 }
+
+#block_id {
+  width: 100px
+}
+
 
 .scene {
   width: 200px;

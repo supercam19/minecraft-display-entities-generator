@@ -39,13 +39,20 @@
 <div class="rotationContainer">
 <p>Rotation Parameters</p>
 <div class="slidecontainer">
-  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('x_rot_val').innerHTML=this.value + '°'" id="x_rotation" /><label id="x_rot_val" for="x_rotation">0°</label>
+  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="document.getElementById('x_rot_input').value=this.value; transform();" id="x_rotation" />
+<input type="text" value="0" onchange="document.getElementById('x_rotation').value=this.value;transform()" id="x_rot_input" size="4" maxlength="4">
+<span>°</span>
 </div>
 <div class="slidecontainer">
-  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('y_rot_val').innerHTML=this.value + '°'" id="y_rotation" /><label id="y_rot_val" for="y_rotation">0°</label>
+  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="document.getElementById('y_rot_input').value=this.value; transform();" id="y_rotation" />
+<input type="text" value="0" onchange="document.getElementById('y_rotation').value=this.value;transform()" id="y_rot_input" size="4" maxlength="4">
+<span>°</span>
 </div>
 <div class="slidecontainer">
-  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="transform();document.getElementById('z_rot_val').innerHTML=this.value + '°'" id="z_rotation" /><label id="z_rot_val" for="z_rotation">0°</label>
+  <input type="range" min="-180" max="180" step="5" value="0" class="slider" onchange="document.getElementById('z_rot_input').value=this.value; transform();" id="z_rotation" />
+<input type="text" value="0" onchange="document.getElementById('z_rotation').value=this.value;transform()" id="z_rot_input" size="4" maxlength="4">
+<span>°</span>
+
 </div>
   <span>Step: </span>
   <input type="number" min="0" step="1" max="10" value="5" class="smallInput" onchange="rotationStep(this.value)" />
