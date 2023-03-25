@@ -222,9 +222,9 @@ function resetRotation() {
     document.getElementById('y_rotation').value=0;
     document.getElementById('z_rotation').value=0;
     transform();
-    document.getElementById('x_rot_val').innerHTML='0°';
-    document.getElementById('y_rot_val').innerHTML='0°';
-    document.getElementById('z_rot_val').innerHTML='0°';
+    document.getElementById('x_rot_input').value='0';
+    document.getElementById('y_rot_input').value='0';
+    document.getElementById('z_rot_input').value='0';
 }
 function resetShear() {
     document.getElementById('x_shear').value=0;

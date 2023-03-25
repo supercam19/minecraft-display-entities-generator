@@ -131,9 +131,8 @@ input[type=range]:focus {
 }
 
 #block_id {
-  width: 100px
+  width: 150px
 }
-
 
 .scene {
   width: 200px;
