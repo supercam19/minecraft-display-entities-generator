@@ -53,7 +53,7 @@ function generate_command() {
         case 'item_display':
             var item_display_pov = document.getElementById("item_display_pov").value;
             command += "item:{id:\""+document.getElementById("item_id").value+"\",Count:1s}";
-            if (item_display_pov =! "default") {command += ", item_display:" + item_display_pov;}
+            if (item_display_pov != "default") {command += ", item_display:" + item_display_pov;}
             break;
         case 'text_display':
             var text = document.getElementById("text_json").value;
