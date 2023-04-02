@@ -18,22 +18,24 @@ function transform() {
 
 function generate_command() {
 	var mtx_prc = 3;
-    var result = generate_matrix("game");
-    //Get additional parameters for the command
-    var sky_light = Math.trunc(document.getElementById("sky_light").value) || -1;
-    var block_light = Math.trunc(document.getElementById("block_light").value) || -1;
-    var billboard = document.getElementById("billboard").value;
-    var anim_duration = document.getElementById("anim_duration").value;
-    anim_duration = Math.trunc(anim_duration * 20);
-    var shadow_radius = document.getElementById("shadow_radius").value;
-    var shadow_strength = document.getElementById("shadow_strength").value;
-    var view_range = document.getElementById("view_range").value;
-    if (document.getElementById("override_glow").checked) {var glow = parseInt(document.getElementById("glow_color").value.substring(1),16);} else {var glow = -1;}
-    var is_glowing = document.getElementById("is_glowing").checked;
-    var ct = document.getElementById("commandType").value;
-    var et = document.getElementById("entityType").value;
-    var command = "";
-    switch (ct) {
+	var result = generate_matrix("game");
+	//Get additional parameters for the command
+	var sky_light = Math.trunc(document.getElementById("sky_light").value) || -1;
+	var block_light = Math.trunc(document.getElementById("block_light").value) || -1;
+	var billboard = document.getElementById("billboard").value;
+	var cull_width = document.getElementById("culling_width").value;
+	var cull_height = document.getElementById("culling_height").value;
+	var anim_duration = document.getElementById("anim_duration").value;
+	anim_duration = Math.trunc(anim_duration * 20);
+	var shadow_radius = document.getElementById("shadow_radius").value;
+	var shadow_strength = document.getElementById("shadow_strength").value;
+	var view_range = document.getElementById("view_range").value;
+	if (document.getElementById("override_glow").checked) {var glow = parseInt(document.getElementById("glow_color").value.substring(1),16);} else {var glow = -1;}
+	var is_glowing = document.getElementById("is_glowing").checked;
+	var ct = document.getElementById("commandType").value;
+	var et = document.getElementById("entityType").value;
+	var command = "";
+	switch (ct) {
         case 'summon':
             command ="summon minecraft:"+et+" ~ ~1 ~ {";
             break;
@@ -99,6 +101,7 @@ ${Number(result[2][0]).toFixed(mtx_prc)}f, ${Number(result[2][1]).toFixed(mtx_pr
 ${Number(result[3][0]).toFixed(mtx_prc)}f, ${Number(result[3][1]).toFixed(mtx_prc)}f, ${Number(result[3][2]).toFixed(mtx_prc)}f,${Number(result[3][3]).toFixed(mtx_prc)}f\
 ]`;
     if (view_range != 1) {command = command + ",view_range:"+view_range+"f";}
+	if (cull_width != 0 || cull_height != 0) {command = command + ",width:"+cull_width+",height:"+cull_height;}
     if (shadow_radius != 1) {command = command + ",shadow_radius:"+shadow_radius+"f";}
     if (shadow_strength != 1) {command = command + ",shadow_strength:"+shadow_strength+"f";}
     if (sky_light < 0 || isNaN(sky_light)) {sky_light = -1;}
